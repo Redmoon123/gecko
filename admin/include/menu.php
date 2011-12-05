@@ -1,7 +1,7 @@
 <ul id="navigation">
 			<li><span><a href="/admin/webpage.php">Web Pages</a></span></li>
 			<li><a href="/admin/template.php">Templates</a></li>
-			<li><a href="/admin/menu.php">Dynamic menu</a></li>
+			<li><a href="/admin/menu.php">Menu</a></li>
 		</ul>
 		<script type="text/javascript">
 		jQuery(document).ready(function(){

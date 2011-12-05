@@ -201,7 +201,7 @@ jQuery(document).ready(function(){
 		<div id="content" class="container_16 clearfix">
 			<div class="grid_11" style="width: 746px !important;">
 
-			<h1>Dynamic Menu</h1>
+			<h1>Menu</h1>
 			
 			<?php
 
@@ -299,7 +299,7 @@ if(mysql_num_rows($sql4)>0){
 				<div class="grid_5" style="width:164px !important;">
 				<h2 style="padding-left: 35px;">Action</h2>
 				<ul>
-					<li><a href="/admin/create_menu.php">Create Dynamic Menu</a></li>
+					<li><a href="/admin/create_menu.php">Create Menu</a></li>
 					<li><a href="/admin/menu.php">View Menus</a></li>
 					<li><a href="/admin/dashboard.php">Dashboard</a></li>
 					

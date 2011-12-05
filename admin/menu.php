@@ -197,7 +197,7 @@ while($row=mysql_fetch_array($sql)){
 				<div class="grid_5">
 				<h2 style="padding-left: 35px;">Action</h2>
 				<ul>
-					<li><a href="/admin/create_menu.php">Create Dynamic Menu</a></li>
+					<li><a href="/admin/create_menu.php">Create Menu</a></li>
 					<li><a href="/admin/dashboard.php">Dashboard</a></li>
 				</ul>
 			</div>

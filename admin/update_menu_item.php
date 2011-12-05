@@ -316,7 +316,7 @@ if(mysql_num_rows($sql4)>0){
 				<div class="grid_5" style="width:164px !important;">
 				<h2 style="padding-left: 35px;">Action</h2>
 				<ul>
-					<li><a href="/admin/create_menu.php">Create Dynamic Menu</a></li>
+					<li><a href="/admin/create_menu.php">Create Menu</a></li>
 					<li><a href="/admin/menu.php">View Menus</a></li>
 					<li><a href="/admin/dashboard.php">Dashboard</a></li>
 					
