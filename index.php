@@ -1,6 +1,6 @@
 <?php
 // All right reserved JC, Ron and Aldrin 2011
-$page = $_GET['page'];
+$page = isset($_GET['page']);
 mysql_connect("localhost","root","");
 mysql_select_db("gecko");
 
