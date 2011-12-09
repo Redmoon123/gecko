@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2011 at 09:00 AM
+-- Generation Time: Dec 09, 2011 at 02:29 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `elem_id` varchar(250) NOT NULL,
   `elem_class` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `menu`
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
 INSERT INTO `menu` (`id`, `name`, `elem_id`, `elem_class`) VALUES
 (4, 'main menu', 'p7PMnav', '0'),
 (9, 'lol', 'lol', 'lol'),
-(10, 'new menu', 'nwmenu', 'test');
+(10, 'new menu', 'nwmenu', 'test'),
+(13, 'wadad', 'wadwad', 'w');
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `template` (
   `content` text NOT NULL,
   `gdefault` int(12) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `template`
@@ -174,6 +175,62 @@ INSERT INTO `user_type` (`id`, `user_type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `weblist`
+--
+
+CREATE TABLE IF NOT EXISTS `weblist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `template` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `weblist`
+--
+
+INSERT INTO `weblist` (`id`, `name`, `template`) VALUES
+(1, 'weeeeee', 0),
+(2, 'weeeeee2', 4),
+(10, 'test', 4),
+(11, 'test2', 8),
+(12, 'dwadwagesdesf', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weblist_field`
+--
+
+CREATE TABLE IF NOT EXISTS `weblist_field` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `type` varchar(250) NOT NULL,
+  `value` varchar(250) NOT NULL,
+  `weblist` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `weblist_field`
+--
+
+INSERT INTO `weblist_field` (`id`, `name`, `type`, `value`, `weblist`) VALUES
+(1, 'string rani', 'string', '', 8),
+(2, 'model', 'string', '', 10),
+(3, 'message', 'string', '', 10),
+(4, 'wager', 'dropdown', 'yes,no', 10),
+(6, 'gender', 'checkbox', 'male,female', 10),
+(7, 'comment', 'texarea', '', 10),
+(8, 'vote', 'radio', 'yes,no', 10),
+(9, 'dfesfsf', 'texarea', '', 12),
+(10, 'dwadwagsfs', 'checkbox', 'dwad, wadwad', 12),
+(11, 'dawdwadad', 'image', '', 12),
+(12, '12/3/2001', 'date', '', 12);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `webpage`
 --
 
@@ -184,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `webpage` (
   `temp_id` int(11) NOT NULL,
   `homepage` int(12) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `webpage`
