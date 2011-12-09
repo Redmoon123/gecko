@@ -95,7 +95,7 @@ jQuery(document).ready(function(){
 		<div id="content" class="container_16 clearfix">
 			<div class="grid_11" style="width: 746px !important;">
 
-			<h1>Create Dynamic Menu</h1>
+			<h1>Create Menu</h1>
 			
 
 <table>
