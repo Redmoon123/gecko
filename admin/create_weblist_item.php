@@ -104,13 +104,14 @@ jQuery(document).ready(function(){
 
 <table>
 <tr><td>Weblist Item Name</td><td><input type="text" name="name" id="name" style="width: 234px" /></td></tr>
-<tr><td colspan="2">custom fields</td></tr>
+<tr><td colspan="2">Custom Fields:</td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 <?php
 
 require_once("include/connect.php");
 
 $sql = mysql_query("SELECT * FROM weblist_field WHERE weblist =1");
+$wf = array();
 while($row=mysql_fetch_array($sql)){
 	switch($row['type']){
 	case '1':
@@ -152,7 +153,14 @@ while($row=mysql_fetch_array($sql)){
 	echo "<tr>".$prev."</tr>";
 	$y = "";
 	
+	$wf[] = $row['id'];
+	
+
 }
+
+
+
+
 ?>
 <tr><td>&nbsp;</td><td><input type="submit" name="save" id="save" value="save" /></td></tr>
 </table>
