@@ -105,6 +105,7 @@ a {
 
 table {
 	width:100%;
+	
 }
 
 th, td {
@@ -234,4 +235,9 @@ button{
     padding: 5px;
     text-align: left;
     width: auto !important;
+}
+
+
+.grid_11 input, .grid_11 textarea {
+width:234px;
 }

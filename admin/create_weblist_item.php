@@ -99,34 +99,61 @@ jQuery(document).ready(function(){
 		<div id="content" class="container_16 clearfix">
 			<div class="grid_11" style="width: 746px !important;">
 
-			<h1>Create Web List</h1>
+			<h1>Create Web List Item</h1>
 			
 
 <table>
-<tr><td>Name</td><td><input type="text" name="name" id="name" style="width: 234px" /></td></tr>
-<tr><td>template</td>
-<td>
-<?php
-
-include_once('include/connect.php');
-
-$sql = mysql_query("SELECT * FROM template");
-
-
-
-?>
-<select name="template" id="template" style="width: auto;">
-<option>no template</option>
-<option value="-1">use default template</option>
-<?php
-while($row=mysql_fetch_array($sql)){
-?>
-<option value="<?=$row['id']?>"><?=$row['name']?></option>
-<?php } ?>
-</select>
-</td>
-</tr>
+<tr><td>Weblist Item Name</td><td><input type="text" name="name" id="name" style="width: 234px" /></td></tr>
+<tr><td colspan="2">custom fields</td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
+<?php
+
+require_once("include/connect.php");
+
+$sql = mysql_query("SELECT * FROM weblist_field WHERE weblist =1");
+while($row=mysql_fetch_array($sql)){
+	switch($row['type']){
+	case '1':
+		$prev = "<td>".$row['name']."</td><td><input type='text' /></td>";
+		break;
+	case '2':
+		$prev = "<td>".$row['name']."</td><td><textarea></textarea></td>";
+		break;
+	case '3':
+		$x = explode(",",$row['option']);
+		foreach($x as $val){
+			$y.= "<option>".$val."</option>";
+		}
+		$prev = "<td>".$row['name']."</td><td><select style='width: auto;'>".$y."</select></td>";
+		break;
+	case '4':
+		$x = explode(",",$row['option']);
+		foreach($x as $val){
+			$y.= "<input type='checkbox' style='width:auto!important;' /> ".$val."<br />";
+		}
+		$prev = "<td>".$row['name']."</td><td>".$y."</td>";
+		break;
+	case '5':
+		$x = explode(",",$row['option']);
+		foreach($x as $val){
+			$y.= "<input type='radio' style='width:auto!important;' /> ".$val."<br />";
+		}
+		$prev = "<td>".$row['name']."</td><td>".$y."</td>";
+		break;
+	case '6':
+		$prev = "<td>".$row['name']."</td><td><input type='text' /></td>";
+		break;
+	case '7':
+		$prev = "<td>".$row['name']."</td><td><input type='text' /></td>";
+		break;		
+	}
+	
+	
+	echo "<tr>".$prev."</tr>";
+	$y = "";
+	
+}
+?>
 <tr><td>&nbsp;</td><td><input type="submit" name="save" id="save" value="save" /></td></tr>
 </table>
 
@@ -137,6 +164,7 @@ while($row=mysql_fetch_array($sql)){
 				<h2 style="padding-left: 35px;">Action</h2>
 				<ul>
 					<li><a href="/admin/create_weblist.php">Create Web List</a></li>
+					<li><a href="/admin/create_weblist_item.php">Create Web List Item</a></li>
 					<li><a href="/admin/dashboard.php">Dashboard</a></li>
 				</ul>
 			</div>
