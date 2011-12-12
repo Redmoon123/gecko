@@ -8,10 +8,10 @@ include_once('include/connect.php');
 
 $name = $_POST['name'];
 $type = $_POST['type'];
-$value = $_POST['value'];
+$option = $_POST['foption'];
 $weblist = $_POST['weblist'];
 
-$sql = mysql_query("INSERT INTO weblist_field VALUES ('','".$name."','".$type."','".$value."','".$weblist."')");
+$sql = mysql_query("INSERT INTO weblist_field VALUES ('','".$name."','".$type."','".$option."','".$weblist."')");
 
 if($sql){
 	echo mysql_insert_id();

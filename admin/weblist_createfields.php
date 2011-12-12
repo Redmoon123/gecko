@@ -43,7 +43,7 @@ jQuery(document).ready(function(){
 			
 				var name= jQuery("#fname").val();
 				var type= jQuery("#ftype").val();
-				var value= jQuery("#fvalue").val();
+				var foption= jQuery("#foption").val();
 			
 				
 			
@@ -52,7 +52,7 @@ jQuery(document).ready(function(){
 			
 				if(name){
 			
-					jQuery.post("/admin/weblist_createfields2.php",{ name:name, type:type, value:value, weblist:<?=$weblist?> }, function(data){
+					jQuery.post("/admin/weblist_createfields2.php",{ name:name, type:type, foption:foption, weblist:<?=$weblist?> }, function(data){
 					
 						if(data=='fail'){
 							alert('Fail');
@@ -97,7 +97,7 @@ jQuery(document).ready(function(){
 			
 			var x = jQuery(this).val();
 			
-			if(x=="dropdown"||x=="radio"||x=="checkbox"){
+			if(x=="3"||x=="4"||x=="5"){
 				jQuery("#trfval").fadeIn();
 			}else{
 				jQuery("#trfval").fadeOut();
@@ -129,24 +129,24 @@ jQuery(document).ready(function(){
 		<div id="content" class="container_16 clearfix">
 			<div class="grid_11" style="width: 746px !important;">
 
-			<h1>Create Web List</h1>
+			<h1>Web List Fields</h1>
 			
 
 <table>
 <tr><td>fields</td>
 <td>type: 
 <select name="ftype" id="ftype" style="width:auto;">
-<option value="string">String</option>
-<option value="texarea">Textarea</option>
-<option value="dropdown">Dropdown</option>
-<option value="checkbox">Checkbox</option>
-<option value="radio">Radio</option>
-<option value="image">Image</option>
-<option value="date">Date</option>
+<option value="1">String</option>
+<option value="2">Textarea</option>
+<option value="3">Dropdown</option>
+<option value="4">Checkbox</option>
+<option value="5">Radio</option>
+<option value="6">Image</option>
+<option value="7">Date</option>
 </select>
 </td></tr>
 <tr><td>&nbsp;</td><td>Name: <input type="text" name="fname" id="fname" style="width: 234px" /></td></tr>
-<tr id="trfval" style="display:none;"><td>&nbsp;</td><td>Value: <input type="text" name="fvalue" id="fvalue" style="width: 191px;" /></td></tr>
+<tr id="trfval" style="display:none;"><td>&nbsp;</td><td>Value: <input type="text" name="foption" id="foption" style="width: 191px;" /></td></tr>
 <tr><td>items</td>
 <td>
 <table style="width:auto">
@@ -154,33 +154,37 @@ jQuery(document).ready(function(){
 
 include_once('include/connect.php');
 
-$sql = mysql_query("SELECT * FROM weblist_field WHERE weblist='".$weblist."'");
+$sql = mysql_query("SELECT w.name as weblist_name, wf.name as weblist_field, wt.name as weblist_type, wf.type , wf.option as weblist_option
+FROM weblist AS w
+LEFT JOIN weblist_field AS wf ON w.id = wf.weblist
+LEFT JOIN weblist_type AS wt ON wf.id = wt.id
+WHERE w.id =".$weblist."");
 while($row=mysql_fetch_array($sql)){
 
 switch($row['type']){
-	case 'dropdown':
-		$x = explode(",",$row['value']);
+	case '3':
+		$x = explode(",",$row['weblist_option']);
 		foreach($x as $val){
 			$y.= "<option>".$val."</option>";
 		}
-		$prev = "<td>".$row['name']."</td><td><select style='width: auto;'>".$y."</select></td>";
+		$prev = "<td>".$row['weblist_field']."</td><td><select style='width: auto;'>".$y."</select></td>";
 		break;
-	case 'checkbox':
-		$x = explode(",",$row['value']);
+	case '4':
+		$x = explode(",",$row['weblist_option']);
 		foreach($x as $val){
 			$y.= "<input type='checkbox' style='width:auto!important;' /> ".$val."<br />";
 		}
-		$prev = "<td>".$row['name']."</td><td>".$y."</td>";
+		$prev = "<td>".$row['weblist_field']."</td><td>".$y."</td>";
 		break;
-	case 'radio':
-		$x = explode(",",$row['value']);
+	case '5':
+		$x = explode(",",$row['weblist_option']);
 		foreach($x as $val){
 			$y.= "<input type='radio' style='width:auto!important;' /> ".$val."<br />";
 		}
-		$prev = "<td>".$row['name']."</td><td>".$y."</td>";
+		$prev = "<td>".$row['weblist_field']."</td><td>".$y."</td>";
 		break;
 	default:
-		$prev = "<td>".$row['name']."(".$row['type'].")</td>";
+		$prev = "<td>".$row['weblist_field']."(".$row['weblist_type'].")</td>";
 	}
 
 	echo "<tr>".$prev."</tr>";
