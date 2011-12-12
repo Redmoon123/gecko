@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteRule ^(.*)\.aspx$ $1.php [nc]
+#RewriteRule ^([a-z0-9]+)$ index.php?g=$1
+#RewriteRule ^([a-z0-9]+)&c=([a-z0-9]+)$ index.php?g=$1&c=$2
+ErrorDocument 404 http://localhost/date/error-page.html
+
