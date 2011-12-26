@@ -28,6 +28,9 @@ include_once('include/loadjQuery.php');
 	<?php
 	// load content slide effects
 	include_once("include/slide_effects.php");
+	
+	
+
 	?>
  <script type="text/javascript">
 jQuery(document).ready(function(){
@@ -179,7 +182,7 @@ switch($row['type']){
 	case '5':
 		$x = explode(",",$row['weblist_option']);
 		foreach($x as $val){
-			$y.= "<input type='radio' style='width:auto!important;' /> ".$val."<br />";
+			$y.= "<input type='radio' name='radio' style='width:auto!important;' /> ".$val."<br />";
 		}
 		$prev = "<td>".$row['weblist_field']."</td><td>".$y."</td>";
 		break;

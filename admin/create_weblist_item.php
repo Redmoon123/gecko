@@ -25,35 +25,151 @@ include_once('include/loadjQuery.php');
 	<?php
 	// load content slide effects
 	include_once("include/slide_effects.php");
+	
+	
+		// instantiate CKEditor, pass arguments = id,attr(comma separated),path
+echo $gecko->load_CKEditor("jcontent","height:400");
 	?>
  <script type="text/javascript">
 jQuery(document).ready(function(){
 
 
+		
+			var wi_id;
+			var wi_id2;
 
+			jQuery("#name").blur(function(){	
 			
-	
+				var name = jQuery("#name").val();
+				if(name){
 			
-	
-			jQuery("#save").click(function(){
-			
-			
-				var name= jQuery("#name").val();
-				var template= jQuery("#template").val();
-			
+					jQuery.post("/admin/create_weblist_item2.php",{ name:name, wi_id:wi_id }, function(data){
+					
+						if(data=='fail'){
+							alert('Fail');
+					
+						}else{
+						wi_id = data;
 				
+						}
+					
+					});
+					
+					
+				}else{
+				
+				
+					jQuery("#jalert1").dialog({
+						autoOpen: false,
+						show: "blind",
+						hide: "explode"
+						});
+					jQuery("#jalert1").dialog("open");
+		
+				
+		
+				}
+					
 			
-
+			});
+			
+			
+			
+			
+			
+			jQuery("#template").blur(function(){
+				
+				var template= jQuery("#template").val();
+				
+				if(template){
+			
+					jQuery.post("/admin/create_weblist_item2.php",{ template:template, wi_id:wi_id }, function(data){
+					
+						if(data=='fail'){
+							alert('Fail');
+						}
+					
+					});
+					
+					
+				}else{
+				
+				
+					jQuery("#jalert1").dialog({
+						autoOpen: false,
+						show: "blind",
+						hide: "explode"
+											});
+					jQuery("#jalert1").dialog("open");
+		
+				
+		
+				}
+					
+			
+			});
+			
+			
+			
+			
+			
+			jQuery("#jcontent").blur(function(){
+			
+				var jcontent = CKEDITOR.instances.jcontent.getData();
 			
 			
 				if(name){
 			
-					jQuery.post("/admin/create_weblist2.php",{ name:name, template:template }, function(data){
+					jQuery.post("/admin/create_weblist_item2.php",{ jcontent:jcontent, wi_id:wi_id }, function(data){
 					
 						if(data=='fail'){
 							alert('Fail');
+						}
+					
+					});
+					
+					
+				}else{
+				
+				
+					jQuery("#jalert1").dialog({
+							autoOpen: false,
+							show: "blind",
+							hide: "explode"
+											});
+					jQuery("#jalert1").dialog("open");
+		
+			
+				}
+					
+			
+			});
+			
+			
+			
+	
+			jQuery(".wval").blur(function(){
+			
+			
+				var wval = jQuery(this).val();
+				var wf = jQuery(this).attr("alt");
+			
+				
+				
+			
+			
+				if(wval){
+			
+					jQuery.post("/admin/create_weblist_item2.php",{ wval:wval, wf:wf, wi_id2:wi_id2 }, function(data){
+					
+						if(data=='fail'){
+							alert('Fail');
+					
+						}else if(data=='success'){
+							wi_id2 = null;
 						}else{
-								window.location="/admin/weblist_createfields.php?weblist="+data+"&frm_crt=1";
+							wi_id2 = data;
+					
 						}
 					
 					});
@@ -89,7 +205,8 @@ jQuery(document).ready(function(){
 	</head>
 	<body>
 	
-		<div id="jalert1" title="gecko" style="display:none;">Please enter web list name</div>
+		<div id="jalert1" title="gecko" style="display:none;">Cannot submit Empty fields</div>
+		
 
 
 		<h1 id="head"><a style="color:#FFFFFF;text-decoration:none;" href="/admin/dashboard.php">Gecko</a></h1>
@@ -103,7 +220,29 @@ jQuery(document).ready(function(){
 			
 
 <table>
-<tr><td>Weblist Item Name</td><td><input type="text" name="name" id="name" style="width: 234px" /></td></tr>
+<tr><td>Weblist Item Name</td><td><input type="text" name="name" id="name" class="wval2"  style="width: 234px" /></td></tr>
+<tr><td>template</td>
+<td>
+<?php
+
+include_once('include/connect.php');
+
+$sql2 = mysql_query("SELECT * FROM template");
+
+
+
+?>
+<select name="template" id="template" class="wval2" style="width: auto;">
+<option>no template</option>
+<option value="-1">use default template</option>
+<?php
+while($row2=mysql_fetch_array($sql2)){
+?>
+<option value="<?=$row2['id']?>"><?=$row2['name']?></option>
+<?php } ?>
+</select>
+</td>
+</tr>
 <tr><td colspan="2">Custom Fields:</td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 <?php
@@ -112,40 +251,38 @@ require_once("include/connect.php");
 
 $sql = mysql_query("SELECT * FROM weblist_field WHERE weblist =1");
 $wf = array();
+$ctr = 1;
 while($row=mysql_fetch_array($sql)){
 	switch($row['type']){
 	case '1':
-		$prev = "<td>".$row['name']."</td><td><input type='text' /></td>";
+		$prev = "<td>".$row['name']."</td><td><input type='text' class='wval' name='wval' alt='".$row['id']."' /></td>";
 		break;
 	case '2':
-		$prev = "<td>".$row['name']."</td><td><textarea></textarea></td>";
+		$prev = "<td>".$row['name']."</td><td><textarea class='wval' name='wval' alt='".$row['id']."'></textarea></td>";
 		break;
 	case '3':
 		$x = explode(",",$row['option']);
 		foreach($x as $val){
 			$y.= "<option>".$val."</option>";
 		}
-		$prev = "<td>".$row['name']."</td><td><select style='width: auto;'>".$y."</select></td>";
+		$prev = "<td>".$row['name']."</td><td><select style='width: auto;' class='wval' name='wval' alt='".$row['id']."'>".$y."</select></td>";
 		break;
 	case '4':
 		$x = explode(",",$row['option']);
 		foreach($x as $val){
-			$y.= "<input type='checkbox' style='width:auto!important;' /> ".$val."<br />";
+			$y.= "<input type='checkbox' style='width:auto!important;' class='wval' name='wval' alt='".$row['id']."' /> ".$val."<br />";
 		}
 		$prev = "<td>".$row['name']."</td><td>".$y."</td>";
 		break;
 	case '5':
 		$x = explode(",",$row['option']);
 		foreach($x as $val){
-			$y.= "<input type='radio' style='width:auto!important;' /> ".$val."<br />";
+			$y.= "<input type='radio' style='width:auto!important;' class='wval' name='wval' alt='".$row['id']."' /> ".$val."<br />";
 		}
 		$prev = "<td>".$row['name']."</td><td>".$y."</td>";
 		break;
-	case '6':
-		$prev = "<td>".$row['name']."</td><td><input type='text' /></td>";
-		break;
 	case '7':
-		$prev = "<td>".$row['name']."</td><td><input type='text' /></td>";
+		$prev = "<td>".$row['name']."</td><td><input type='text' id='jdatepicker' class='wval' name='wval' alt='".$row['id']."' /></td>";
 		break;		
 	}
 	
@@ -153,7 +290,7 @@ while($row=mysql_fetch_array($sql)){
 	echo "<tr>".$prev."</tr>";
 	$y = "";
 	
-	$wf[] = $row['id'];
+	$ctr++;
 	
 
 }
@@ -162,7 +299,7 @@ while($row=mysql_fetch_array($sql)){
 
 
 ?>
-<tr><td>&nbsp;</td><td><input type="submit" name="save" id="save" value="save" /></td></tr>
+<tr><td>content</td><td><textarea id="jcontent" name="content" class="wval2"></textarea></td></tr>
 </table>
 
 			
