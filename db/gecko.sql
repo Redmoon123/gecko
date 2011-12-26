@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 12, 2011 at 01:17 AM
+-- Generation Time: Dec 26, 2011 at 08:43 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `elem_id` varchar(250) NOT NULL,
   `elem_class` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `menu`
@@ -79,7 +79,8 @@ INSERT INTO `menu` (`id`, `name`, `elem_id`, `elem_class`) VALUES
 (4, 'main menu', 'p7PMnav', '0'),
 (9, 'lol', 'lol', 'lol'),
 (10, 'new menu', 'nwmenu', 'test'),
-(13, 'wadad', 'wadwad', 'w');
+(13, 'wadad', 'wadwad', 'w'),
+(14, 'shinobi', 'shinobi', 'shinobi');
 
 -- --------------------------------------------------------
 
@@ -163,8 +164,7 @@ CREATE TABLE IF NOT EXISTS `template` (
 INSERT INTO `template` (`id`, `name`, `content`, `gdefault`) VALUES
 (4, 'main', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml">\n	<head>\n		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />\n		<title>Change Site Title!!</title>\n		<link href="/css/global.css" media="screen" rel="stylesheet" type="text/css" />\n		<link href="/css/print.css" media="print" rel="stylesheet" type="text/css" />\n		<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script><!--[if lte IE 6]><script src="/js/png.js" type="text/javascript" language="javascript"></script><![endif]--><script type="text/javascript" src="/js/jquery.selectbox.js"></script><script type="text/javascript" src="/p7pm/p7popmenu.js"></script><script type="text/javascript">\n\njQuery(function() {\n    jQuery(".category").selCust();\n});\n</script><script type="text/javascript">\njQuery(document).ready(function(){\n\n	jQuery("#p7PMnav li").eq(0).addClass("noBG");\n\n});\n</script>\n		<style media="screen" type="text/css">\n<!--\n@import url("/p7pm/p7pmh0.css");\n-->		</style>\n	</head>\n	<body onload="P7_initPM(1,0,1,-20,10)">\n		<div id="bg">\n			&nbsp;</div>\n		<div id="wrapper">\n			<div id="header">\n				<a class="logo left" href="#"><img alt="" height="112" src="/images/logo.gif" width="398" /> </a>\n				<div class="box right">\n					<div class="fb-icon right">\n						<img alt="" height="44" src="/images/fb.gif" width="144" /></div>\n					<div class="contact-num">\n						<img alt="" height="92" src="/images/contact-num.png" width="296" /></div>\n				</div>\n				<div class="clearB">\n					&nbsp;</div>\n				<div id="menu">\n					{gecko_menu_2015}</div>\n			</div>\n			<div id="body">\n				<div class="banner">\n					<img alt="" height="235" src="/images/banner-img.jpg" width="955" /></div>\n				<div class="feature">\n					<div class="feature-box left">\n						<div class="feature-title">\n							Buying Cars</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img1.jpg" width="225" /></div>\n					</div>\n					<div class="feature-box left">\n						<div class="feature-title">\n							Car Finance</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img2.jpg" width="225" /></div>\n					</div>\n					<div class="feature-box left">\n						<div class="feature-title">\n							Car Insurance</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img3.jpg" width="225" /></div>\n					</div>\n					<div class="feature-box left">\n						<div class="feature-title">\n							Contact Us</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img4.jpg" width="225" /></div>\n					</div>\n					<div class="clearB">\n						&nbsp;</div>\n				</div>\n				<div class="content">\n					<div class="cont-leftpannel">\n						{gecko_content}</div>\n					<div class="cont-rightpannel">\n						<div class="boxA">\n							<div class="boxA-head">\n								Request a Call Back</div>\n							<div class="boxA-body">\n								<p>\n									Please fill out the form below to<br />\n									request a call back from one of our<br />\n									friendly customer service assistants</p>\n								<table cellpadding="0" cellspacing="0">\n									<tbody>\n										<tr>\n											<td>\n												<div class="txtinput">\n													<input type="text" value="Name" /></div>\n											</td>\n										</tr>\n										<tr>\n											<td>\n												<div class="txtinput">\n													<input type="text" value="Phone" /></div>\n											</td>\n										</tr>\n										<tr>\n											<td>\n												<div class="txtinput">\n													<input type="text" value="Preferred Day" /></div>\n											</td>\n										</tr>\n										<tr>\n											<td>\n												<div class="txtinput">\n													<input type="text" value="Preferred Time" /></div>\n											</td>\n										</tr>\n										<tr>\n											<td>\n												<div class="left">\n													<select class="category" name="category"><option value="cat1">State</option><option value="cat2">Category2</option><option value="cat3">1</option><option value="cat4">Category4</option><option value="cat5">Category5</option><option value="cat6">Category6</option><option value="cat7">Category7</option><option value="cat5">Category5</option><option value="cat6">Category6</option><option value="cat7">Category7</option></select></div>\n												<div class="btnsubmit right">\n													<input src="/images/btnsubmit.gif" type="image" /></div>\n											</td>\n										</tr>\n									</tbody>\n								</table>\n								<div class="clearB">\n									&nbsp;</div>\n							</div>\n						</div>\n						<div class="boxA">\n							<div class="boxA-head">\n								Testimonials</div>\n							<div class="boxA-body textimonials">\n								<div class="testimonial-box">\n									<p>\n										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>\n									<span class="right">- Joe Smith</span>\n									<div class="clearB">\n										&nbsp;</div>\n								</div>\n								<div class="testimonial-box">\n									<p>\n										ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>\n									<span class="right">- Ron Jones</span></div>\n								<div class="clearB">\n									&nbsp;</div>\n							</div>\n							<br />\n							<br />\n							&nbsp;</div>\n					</div>\n					<div class="clearB">\n						&nbsp;</div>\n				</div>\n			</div>\n			<div class="clearB">\n				&nbsp;</div>\n		</div>\n		<div id="wrap-footer">\n			<div id="footer">\n				<div class="foot-boxA left">\n					<img alt="" height="77" src="/images/icon1.jpg" width="125" /></div>\n				<div class="foot-boxB left">\n					<h1>\n						Contac Us</h1>\n					<p>\n						Telephone: 1300 880 686<br />\n						Email: info@findmycar.com.au</p>\n				</div>\n				<div class="foot-boxC left">\n					<h1 class="xB">\n						Links</h1>\n					<ul class="left">\n						<li>\n							<a href="#">Home</a></li>\n						<li>\n							<a href="#">Why Use Us</a></li>\n						<li>\n							<a href="#">How It Works</a></li>\n						<li>\n							<a href="#">Our Services</a></li>\n						<li>\n							<a href="#">FAQ&#39;s</a></li>\n						<li>\n							<a href="#">Sell / Trade</a></li>\n						<li>\n							<a href="#">Vehicle Accessories</a></li>\n					</ul>\n					<ul class="left">\n						<li>\n							<a href="#">Buying New / Used Cars</a></li>\n						<li>\n							<a href="#">Car Finance</a></li>\n						<li>\n							<a href="#">Car Insurance</a></li>\n						<li>\n							<a href="#">Customer Service</a></li>\n						<li>\n							<a href="#">Our Community</a></li>\n						<li>\n							<a href="#">News / Media</a></li>\n						<li>\n							<a href="#">Contact Us</a></li>\n					</ul>\n				</div>\n				<div class="clearB">\n					&nbsp;</div>\n				<div class="copyright">\n					All Rights Reserved ? 2011 | <a href="#"> Privacy Policy and Disclaimer</a></div>\n			</div>\n		</div>\n		<script type="text/javascript" src="/js/cufon-yui.js"></script><script type="text/javascript" src="/js/Verdana_italic_700.font.js"></script><script type="text/javascript" src="/js/customscript.js"></script></body>\n</html>\n', 0),
 (8, 'test default template', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml">\n	<head>\n		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />\n		<title>Change Site Title!!</title>\n		<link href="/css/global.css" media="screen" rel="stylesheet" type="text/css" />\n		<link href="/css/print.css" media="print" rel="stylesheet" type="text/css" />\n		<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script><!--[if lte IE 6]><script src="/js/png.js" type="text/javascript" language="javascript"></script><![endif]--><script type="text/javascript" src="/js/jquery.selectbox.js"></script><script type="text/javascript" src="/p7pm/p7popmenu.js"></script><script type="text/javascript">\n\njQuery(function() {\n    jQuery(".category").selCust();\n});\n</script><script type="text/javascript">\njQuery(document).ready(function(){\n\n	jQuery("#p7PMnav li").eq(0).addClass("noBG");\n\n});\n</script>\n		<style media="screen" type="text/css">\n<!--\n@import url("/p7pm/p7pmh0.css");\n-->		</style>\n	</head>\n	<body onload="P7_initPM(1,0,1,-20,10)">\n		<div id="bg">\n			&nbsp;</div>\n		<div id="wrapper">\n			<div id="header">\n				<a class="logo left" href="#"><img alt="" height="112" src="/images/logo.gif" width="398" /> </a>\n				<div class="box right">\n					<div class="fb-icon right">\n						<img alt="" height="44" src="/images/fb.gif" width="144" /></div>\n					<div class="contact-num">\n						<img alt="" height="92" src="/images/contact-num.png" width="296" /></div>\n				</div>\n				<div class="clearB">\n					&nbsp;</div>\n				<div id="menu">\n					{gecko_menu_2015}</div>\n			</div>\n			<div id="body">\n				<div class="banner">\n					<img alt="" height="235" src="/images/banner-img.jpg" width="955" /></div>\n				<div class="feature">\n					<div class="feature-box left">\n						<div class="feature-title">\n							Buying Cars</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img1.jpg" width="225" /></div>\n					</div>\n					<div class="feature-box left">\n						<div class="feature-title">\n							Car Finance</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img2.jpg" width="225" /></div>\n					</div>\n					<div class="feature-box left">\n						<div class="feature-title">\n							Car Insurance</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img3.jpg" width="225" /></div>\n					</div>\n					<div class="feature-box left">\n						<div class="feature-title">\n							Contact Us</div>\n						<div class="feat-img">\n							<img alt="" height="150" src="/images/feat-img4.jpg" width="225" /></div>\n					</div>\n					<div class="clearB">\n						&nbsp;</div>\n				</div>\n				<div class="content">\n					<div class="cont-leftpannel">\n						{gecko_content}</div>\n					<div class="clearB">\n						&nbsp;</div>\n				</div>\n			</div>\n			<div class="clearB">\n				&nbsp;</div>\n		</div>\n		<div id="wrap-footer">\n			<div id="footer">\n				<div class="foot-boxA left">\n					<img alt="" height="77" src="/images/icon1.jpg" width="125" /></div>\n				<div class="foot-boxB left">\n					<h1>\n						Contac Us</h1>\n					<p>\n						Telephone: 1300 880 686<br />\n						Email: info@findmycar.com.au</p>\n				</div>\n				<div class="foot-boxC left">\n					<h1 class="xB">\n						Links</h1>\n					<ul class="left">\n						<li>\n							<a href="#">Home</a></li>\n						<li>\n							<a href="#">Why Use Us</a></li>\n						<li>\n							<a href="#">How It Works</a></li>\n						<li>\n							<a href="#">Our Services</a></li>\n						<li>\n							<a href="#">FAQ&#39;s</a></li>\n						<li>\n							<a href="#">Sell / Trade</a></li>\n						<li>\n							<a href="#">Vehicle Accessories</a></li>\n					</ul>\n					<ul class="left">\n						<li>\n							<a href="#">Buying New / Used Cars</a></li>\n						<li>\n							<a href="#">Car Finance</a></li>\n						<li>\n							<a href="#">Car Insurance</a></li>\n						<li>\n							<a href="#">Customer Service</a></li>\n						<li>\n							<a href="#">Our Community</a></li>\n						<li>\n							<a href="#">News / Media</a></li>\n						<li>\n							<a href="#">Contact Us</a></li>\n					</ul>\n				</div>\n				<div class="clearB">\n					&nbsp;</div>\n				<div class="copyright">\n					All Rights Reserved ? 2011 | <a href="#"> Privacy Policy and Disclaimer</a></div>\n			</div>\n		</div>\n		<script type="text/javascript" src="/js/cufon-yui.js"></script><script type="text/javascript" src="/js/Verdana_italic_700.font.js"></script><script type="text/javascript" src="/js/customscript.js"></script></body>\n</html>\n', 1),
-(9, 'my new template', '<html>\n	<head>\n		<title></title>\n	</head>\n	<body>\n		<div style="border: 1px solid red;">\n			<p>\n				{gecko_content}</p>\n			<p>\n				&nbsp;</p>\n			<h2>\n				{gecko_menu_2021}</h2>\n		</div>\n		<p>\n			&nbsp;</p>\n	</body>\n</html>\n', 0),
-(10, 'test', '<html>\n	<head>\n		<title></title>\n	</head>\n	<body>\n		<p>\n			{gecko_content}</p>\n	</body>\n</html>\n', 0);
+(9, 'my new template', '<html>\n	<head>\n		<title></title>\n	</head>\n	<body>\n		<div style="border: 1px solid red;">\n			<p>\n				{gecko_content}</p>\n			<p>\n				&nbsp;</p>\n			<h2>\n				{gecko_menu_2021}</h2>\n		</div>\n		<p>\n			&nbsp;</p>\n	</body>\n</html>\n', 0);
 
 -- --------------------------------------------------------
 
@@ -222,19 +222,14 @@ CREATE TABLE IF NOT EXISTS `weblist` (
   `name` varchar(250) NOT NULL,
   `template` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `weblist`
 --
 
 INSERT INTO `weblist` (`id`, `name`, `template`) VALUES
-(1, 'weeeeee', 0),
-(2, 'weeeeee2', 4),
-(10, 'test', 4),
-(11, 'test2', 8),
-(12, 'dwadwagesdesf', 4),
-(13, 'sample', 0);
+(1, 'shinobi', 0);
 
 -- --------------------------------------------------------
 
@@ -246,30 +241,85 @@ CREATE TABLE IF NOT EXISTS `weblist_field` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `type` varchar(250) NOT NULL,
-  `value` varchar(250) NOT NULL,
+  `option` varchar(250) NOT NULL,
   `weblist` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `weblist_field`
 --
 
-INSERT INTO `weblist_field` (`id`, `name`, `type`, `value`, `weblist`) VALUES
-(1, 'string rani', 'string', '', 8),
-(2, 'model', 'string', '', 10),
-(3, 'message', 'string', '', 10),
-(4, 'wager', 'dropdown', 'yes,no', 10),
-(6, 'gender', 'checkbox', 'male,female', 10),
-(7, 'comment', 'texarea', '', 10),
-(8, 'vote', 'radio', 'yes,no', 10),
-(9, 'dfesfsf', 'texarea', '', 12),
-(10, 'dwadwagsfs', 'checkbox', 'dwad, wadwad', 12),
-(11, 'dawdwadad', 'image', '', 12),
-(12, '12/3/2001', 'date', '', 12),
-(13, 'name', 'string', '', 13),
-(14, 'model', 'texarea', '', 13),
-(15, 'free', 'dropdown', 'yes,no', 13);
+INSERT INTO `weblist_field` (`id`, `name`, `type`, `option`, `weblist`) VALUES
+(1, 'name', '1', '', 1),
+(2, 'description', '2', '', 1),
+(3, 'town', '3', 'konohagakure,Iwagakure,Kumogakure,Kirigakure,Sunagakure', 1),
+(4, 'combat type', '4', 'taijutsu,genjutsu', 1),
+(5, 'gender', '5', 'male,female', 1),
+(6, 'date of birth', '7', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weblist_item`
+--
+
+CREATE TABLE IF NOT EXISTS `weblist_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `content` text NOT NULL,
+  `template` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `weblist_item`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weblist_type`
+--
+
+CREATE TABLE IF NOT EXISTS `weblist_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `weblist_type`
+--
+
+INSERT INTO `weblist_type` (`id`, `name`) VALUES
+(1, 'string'),
+(2, 'textarea'),
+(3, 'dropdown'),
+(4, 'checkbox'),
+(5, 'radio'),
+(6, 'image'),
+(7, 'date');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weblist_value`
+--
+
+CREATE TABLE IF NOT EXISTS `weblist_value` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `weblist_item` int(11) NOT NULL,
+  `weblist_field` int(11) NOT NULL,
+  `value` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `weblist_value`
+--
+
 
 -- --------------------------------------------------------
 
