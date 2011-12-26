@@ -9,6 +9,8 @@ $conf = new Gconfig();
 mysql_connect($conf->dbhost,$conf->dbuser,$conf->dbpass);
 mysql_select_db($conf->database);
 
-
+	require_once('class/directory_actions.php');
+	$gecko = new Objectdir;
+	global $gecko;
 
 ?>

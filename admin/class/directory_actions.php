@@ -53,6 +53,10 @@
 			echo "were connected...";
 		}
 		
+		function secureget($str=""){
+			return (isset($_GET[$str])) ? mysql_escape_string($_GET[$str]) : '';
+		}
+		
 		function securepost($str){
 			return (isset($_POST[$str])) ? $_POST[$str]:'';
 		}
@@ -78,19 +82,21 @@
 				}
 				
 				for($i = 1;$i < $getCount+1; $i++){
-					echo "<a href=\"?pg={$i}\">".$i."</a>";
+					echo "<a href=\"&amp;pg={$i}\">".$i."</a>";
 				}
 		}
 
-		function SelectOptionGallery(){
+		function SelectOptionGallery($selected=""){
 			$theroot = $_SERVER['DOCUMENT_ROOT'];
 			$scandir = scandir($theroot);
-			$args = array("jpg","gif","png","JPG","txt","PNG","BMP","js","php","htaccess","git","admin","ckeditor","db");
+			$args = array("jpg","gif","png","JPG","txt","PNG","BMP","js","php","htaccess","git","admin","ckeditor","db","htm","html","asp","aspx");
 			foreach($scandir as $each){
 				if($each =="." || $each ==".." || in_array($this->getAttributeExtension($each),$args)){
 				
 				}else{  
-					echo "<option value=\"$each\">".$each."</option>";
+					$valid = ($each==$selected) ? 'selected' : '';
+					
+					echo "<option value=\"$each\" {$valid}>".$each."</option>";
 				}
 			}
 		}
@@ -103,20 +109,39 @@
 		function gettable($tbl){
 			$sql = "INSERT $tbl SET ".implode(",",$this->gfields);;
 			$res = $this->query($sql);
-			return $res;
+			return $res ? mysql_insert_id() : 0;
+		}
+		
+		function secured($id){
+			return mysql_escape_string($id);
+		}
+		
+		function updatetable($tbl,$id){
+			$where = $id !=="" ? " where ".$id : "";
+			$sql = "UPDATE $tbl SET ".implode(",",$this->gfields).$where;
+			$res = $this->query($sql);
+			return $res ? mysql_insert_id() : 0;
 		}
 		
 		function therows(){
 			return $this->geckorows;
 		}
 		
-		function gallerySave($name,$dir,$status=""){
+		function gallerySave($name,$dir,$status="",$data){
 			$this->galleryFields('galleryname',mysql_escape_string($name));
 			$this->galleryFields('directory',mysql_escape_string($dir));
 			if($status !==""){
 				$this->galleryFields('gallery_status',mysql_escape_string($status));
 			}
-			$this->gettable('gallery');
+			if($data == 'save'){
+					echo $this->gettable('gallery');
+			}
+		}
+		
+		function galleryUpdate($name,$dir,$id){
+			$this->galleryFields('galleryname',$name);
+			$this->galleryFields('directory',$dir);
+			$this->updatetable("gallery","id=".$id);
 		}
 		
 		function query($str){
@@ -154,6 +179,12 @@
 			$args = "SELECT * from gallery where id=".$id;
 			$res = $this->query($args);
 			return $res;
+		}
+		
+		function geckoDelete($table,$where=""){
+			$wer = $where !=="" ? "where $where" : "";
+			$sql = "DELETE from $table $wer";
+			return $this->query($sql);
 		}
 	}
 	
